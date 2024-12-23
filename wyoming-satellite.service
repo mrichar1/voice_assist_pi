@@ -1,0 +1,14 @@
+[Unit]
+Description=Wyoming Satellite
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/pi/wyoming-satellite/script/run --name 'satellite alpha' --uri 'tcp://0.0.0.0:10700' --mic-command 'arecord -D plughw:CARD=Y02,DEV=0 -r 16000 -c 1 -f S16_LE -t raw' --snd-command 'aplay -D plughw:CARD=Y02,DEV=0 -r 22050 -c 1 -f S16_LE -t raw' --wake-uri 'tcp://127.0.0.1:10400' --wake-word-name 'hey_alba'
+WorkingDirectory=/home/pi/wyoming-satellite
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
