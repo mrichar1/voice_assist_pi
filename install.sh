@@ -4,6 +4,14 @@
 sudo apt-get update
 sudo apt-get install --no-install-recommends -y git python3-venv libopenblas-dev
 
+mkdir /home/pi/voice_media /home/pi/voice_models
+# Add custom media
+cp *.wav /home/pi/voice_media/
+cp *.tflite /home/pi/voice_models/
+
+# Add systemd services
+sudo cp *.service /lib/systemd/system
+
 cd /home/pi
 
 # Set up satellite
@@ -25,10 +33,7 @@ cd wyoming-openwakeword
 script/setup
 cd ..
 
-# Add custom media
-cp beep_* /home/pi/wyoming-satellite
-cp hey_alba.tflite /home/pi/wyoming-openwakeword
+sudo systemctl daemon-reload
+sudo systemctl enable wyoming-satellite #wyoming-openwakeword
+sudo systemctl start wyoming-satellite #wyoming-openwakeword
 
-# Add systemd services
-sudo cp wyoming-*.service /lib/systemd/system
-sudo systemctl enable wyoming-*
