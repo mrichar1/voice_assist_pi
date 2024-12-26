@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 # Set name to a unique name for each satellite device
-ExecStart=/home/pi/wyoming-satellite/script/run --name 'satellite alpha' --uri 'tcp://0.0.0.0:10700' --mic-command 'arecord -D plughw:CARD=Y02,DEV=0 -r 16000 -c 1 -f S16_LE -t raw' --snd-command 'aplay -D plughw:CARD=Y02,DEV=0 -r 22050 -c 1 -f S16_LE -t raw' --wake-wav /home/pi/voice_media/awake.wav --done-wav /home/pi/voice_media/done.wav
+ExecStart=/home/pi/wyoming-satellite/script/run --name 'satellite alpha' --uri 'tcp://0.0.0.0:10700' --mic-command 'arecord -D plughw:CARD=Y02,DEV=0 -r 16000 -c 1 -f S16_LE -t raw' --snd-command 'aplay -D plughw:CARD=Y02,DEV=0 -r 22050 -c 1 -f S16_LE -t raw' --awake-wav /home/pi/voice_media/awake.wav --done-wav /home/pi/voice_media/done.wav
 # Add these options to use local wakeword service:
 # --wake-uri 'tcp://127.0.0.1:10400' --wake-word-name 'hey_alba'
 WorkingDirectory=/home/pi/wyoming-satellite
