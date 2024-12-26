@@ -4,7 +4,7 @@
 
 # Enable autologin on tty1
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-cat << 'EOF' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+cat << 'EOF' | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty --autologin pi --noclear %I $TERM
