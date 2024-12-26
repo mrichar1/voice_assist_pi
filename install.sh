@@ -2,7 +2,7 @@
 
 # Install deps
 sudo apt-get update
-sudo apt-get install --no-install-recommends -y git python3-venv libopenblas-dev
+sudo apt-get install --no-install-recommends -y git python3-venv libopenblas-dev zram-tools
 
 mkdir /home/pi/voice_media /home/pi/voice_models
 # Add custom media
