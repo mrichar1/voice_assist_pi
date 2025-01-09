@@ -1,0 +1,14 @@
+[Unit]
+Description=Bluetooth Auto Connect Service
+After=bluealsa.service
+Before=snapclient.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 2  # Delay to ensure Bluetooth is fully initialized
+ExecStart=/bin/bash -c 'source /etc/default/bt-connect && for mac in $BLUETOOTH_MACS; do bluetoothctl connect $mac; done'
+EnvironmentFile=/etc/default/bt-connect
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

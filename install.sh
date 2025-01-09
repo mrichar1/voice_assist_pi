@@ -10,7 +10,7 @@ cp *.wav /home/pi/voice_media/
 cp *.tflite /home/pi/voice_models/
 
 # Add systemd services
-sudo cp *.service /lib/systemd/system
+sudo cp wyoming.service /lib/systemd/system
 
 cd /home/pi
 
